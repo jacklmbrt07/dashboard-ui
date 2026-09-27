@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import DashboardCard from "@/components/dashboard/DashboardCard";
 import { Folders, MessageCircle, Newspaper, User } from "lucide-react";
 import PostsTable from "@/components/posts/PostsTable";
+import AnalyticsChart from "@/components/dashboard/AnalyticsChart";
 
 const dashboardCards = [
   { title: "Posts", count: 100, icon: Newspaper },
@@ -23,6 +24,7 @@ export default function Home() {
           />
         ))}
       </div>
+      <AnalyticsChart />
       <PostsTable title="Latest Posts" limit={5} />
       <h1 className="text-2xl">Dashboard</h1>
       <Button variant="destructive" size="lg" className="text-blue-400">
