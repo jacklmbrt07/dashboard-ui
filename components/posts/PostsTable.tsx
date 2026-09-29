@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -10,18 +11,34 @@ import {
 import Link from "next/link";
 import posts from "@/data/posts";
 import { Post } from "@/types/posts";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { useState } from "react";
 
 interface PostTableProps {
   limit?: number;
   title?: string;
 }
 
-const PostsTable = ({ limit, title }: PostTableProps) => {
+const PostsTable = ({ limit = 5, title }: PostTableProps) => {
+  const [currPage, setCurrPage] = useState(1);
+
   const sortedPosts: Post[] = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
-  const filteredPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts
+  const filteredPosts = limit
+    ? sortedPosts.slice((currPage - 1) * limit, limit * currPage)
+    : sortedPosts;
+
+  const pages = posts.length / limit;
 
   return (
     <div className="mt-10">
@@ -59,6 +76,35 @@ const PostsTable = ({ limit, title }: PostTableProps) => {
           ))}
         </TableBody>
       </Table>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              href="#"
+              onClick={() => setCurrPage(currPage - 1)}
+            />
+          </PaginationItem>
+
+          {Array.from({ length: pages }, (_, i) => (
+            <PaginationItem key={i}>
+              <PaginationLink
+                href="#"
+                isActive={currPage === i + 1}
+                onClick={() => setCurrPage(i + 1)}
+              >
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+
+          <PaginationItem>
+            <PaginationNext
+              href="#"
+              onClick={() => setCurrPage(currPage + 1)}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };

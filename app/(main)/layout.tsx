@@ -6,7 +6,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Navbar />
       <div className="flex">
-        <div className="hidden md:block w-87.5">
+        <div className="hidden md:block h-screen w-87.5">
           <Sidebar />
         </div>
         <div className="p-5 w-full md:max-w-285">{children}</div>
