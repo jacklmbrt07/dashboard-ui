@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,17 +36,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "font-sans",
         inter.variable,
       )}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <div className="flex">
-          <div className="hidden md:block h-screen w-87.5">
-            <Sidebar />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <div className="flex">
+            <div className="hidden md:block h-screen w-87.5">
+              <Sidebar />
+            </div>
+            <div className="p-5 w-full md:max-w-285">{children}</div>
           </div>
-          <div className="p-5 w-full md:max-w-285">
-            {children}
-          </div>
-        </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
