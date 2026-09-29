@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
@@ -45,13 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <div className="flex">
-            <div className="hidden md:block h-screen w-87.5">
-              <Sidebar />
-            </div>
-            <div className="p-5 w-full md:max-w-285">{children}</div>
-          </div>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>

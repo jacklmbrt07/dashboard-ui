@@ -26,10 +26,6 @@ export default function Home() {
       </div>
       <AnalyticsChart />
       <PostsTable title="Latest Posts" limit={5} />
-      <h1 className="text-2xl">Dashboard</h1>
-      <Button variant="destructive" size="lg" className="text-blue-400">
-        Click Me
-      </Button>
     </div>
   );
 }
