@@ -17,6 +17,7 @@ import {
   CreditCard,
   Settings,
   User,
+  Sparkles,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -42,6 +43,12 @@ const Sidebar = () => {
             <Link href="#" className="flex items-center">
               <Folders className="mr-2 h-4 w-4" />
               Categories
+            </Link>
+          </CommandItem>
+          <CommandItem>
+            <Link href="/chat" className="flex items-center">
+              <Sparkles className="mr-2 h-4 w-4" />
+              AI Assistant
             </Link>
           </CommandItem>
         </CommandGroup>
