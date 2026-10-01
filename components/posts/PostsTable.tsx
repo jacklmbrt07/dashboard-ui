@@ -38,7 +38,7 @@ const PostsTable = ({ limit = 5, title }: PostTableProps) => {
     ? sortedPosts.slice((currPage - 1) * limit, limit * currPage)
     : sortedPosts;
 
-  const pages = posts.length / limit;
+  const pages = Math.ceil(posts.length / limit);
 
   return (
     <div className="mt-10">

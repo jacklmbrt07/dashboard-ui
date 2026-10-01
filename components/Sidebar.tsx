@@ -1,6 +1,5 @@
 import {
   Command,
-  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -18,6 +17,7 @@ import {
   Settings,
   User,
   Sparkles,
+  Lightbulb,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -46,9 +46,15 @@ const Sidebar = () => {
             </Link>
           </CommandItem>
           <CommandItem>
+            <Link href="/incidents" className="flex items-center">
+              <Lightbulb className="mr-2 h-4 w-4" />
+              Incidents
+            </Link>
+          </CommandItem>
+          <CommandItem>
             <Link href="/chat" className="flex items-center">
               <Sparkles className="mr-2 h-4 w-4" />
-              AI Assistant
+              AI Agent
             </Link>
           </CommandItem>
         </CommandGroup>
